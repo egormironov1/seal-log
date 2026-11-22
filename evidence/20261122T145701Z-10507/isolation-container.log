@@ -1,0 +1,18 @@
+[2026-11-22 14:57:04 +0000] [1] [INFO] Starting gunicorn 27.0.1
+[2026-11-22 14:57:04 +0000] [1] [INFO] Listening at: http://0.0.0.0:8000 (1)
+[2026-11-22 14:57:04 +0000] [1] [INFO] Using worker: sync
+[2026-11-22 14:57:04 +0000] [13] [INFO] Booting worker with pid: 13
+[2026-11-22 14:57:04 +0000] [1] [INFO] Control socket listening at /home/appuser/.gunicorn/gunicorn.ctl
+127.0.0.1 - - [22/Nov/2026:14:57:04 +0000] "GET /health HTTP/1.1" 200 37 "-" "Python-urllib/3.13"
+127.0.0.1 - - [22/Nov/2026:14:57:04 +0000] "GET /me HTTP/1.1" 200 78 "-" "Python-urllib/3.13"
+127.0.0.1 - - [22/Nov/2026:14:57:04 +0000] "GET /me HTTP/1.1" 200 77 "-" "Python-urllib/3.13"
+127.0.0.1 - - [22/Nov/2026:14:57:04 +0000] "POST /objects HTTP/1.1" 201 177 "-" "Python-urllib/3.13"
+127.0.0.1 - - [22/Nov/2026:14:57:04 +0000] "POST /objects/1/inspections HTTP/1.1" 201 100 "-" "Python-urllib/3.13"
+127.0.0.1 - - [22/Nov/2026:14:57:04 +0000] "GET /objects/1 HTTP/1.1" 200 177 "-" "Python-urllib/3.13"
+127.0.0.1 - - [22/Nov/2026:14:57:04 +0000] "GET /objects/1/history HTTP/1.1" 200 347 "-" "Python-urllib/3.13"
+127.0.0.1 - - [22/Nov/2026:14:57:04 +0000] "GET /objects/1 HTTP/1.1" 404 22 "-" "Python-urllib/3.13"
+127.0.0.1 - - [22/Nov/2026:14:57:04 +0000] "GET /objects/1/history HTTP/1.1" 404 22 "-" "Python-urllib/3.13"
+127.0.0.1 - - [22/Nov/2026:14:57:04 +0000] "POST /objects/1/inspections HTTP/1.1" 404 22 "-" "Python-urllib/3.13"
+127.0.0.1 - - [22/Nov/2026:14:57:04 +0000] "POST /objects/1/seals HTTP/1.1" 404 22 "-" "Python-urllib/3.13"
+127.0.0.1 - - [22/Nov/2026:14:57:04 +0000] "GET /objects/1 HTTP/1.1" 200 177 "-" "Python-urllib/3.13"
+127.0.0.1 - - [22/Nov/2026:14:57:04 +0000] "GET /objects/1/history HTTP/1.1" 200 347 "-" "Python-urllib/3.13"

@@ -1,0 +1,65 @@
+[
+    {
+        "Architecture": "amd64",
+        "Config": {
+            "Cmd": [
+                "gunicorn",
+                "--bind",
+                "0.0.0.0:8000",
+                "--workers",
+                "1",
+                "--access-logfile",
+                "-",
+                "app:app"
+            ],
+            "Env": [
+                "PATH=/usr/local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
+                "LANG=C.UTF-8",
+                "GPG_KEY=7169605F62C751356D054A26A821E680E5FA6305",
+                "PYTHON_VERSION=3.13.18",
+                "PYTHON_SHA256=abb0102e6d4ae027509bcb82327d9dd85515b44a3ba8ad538cfc5e9847029f68",
+                "DATABASE_PATH=/data/seal-log.db",
+                "PYTHONDONTWRITEBYTECODE=1"
+            ],
+            "ExposedPorts": {
+                "8000/tcp": {}
+            },
+            "User": "appuser",
+            "WorkingDir": "/app"
+        },
+        "Created": "2026-11-22T17:44:08.773897743+03:00",
+        "Descriptor": {
+            "digest": "sha256:fabf007fd8177a7ae6dea528abb8fb464b7efffdac3dad7f31d65555d4f34eb6",
+            "mediaType": "application/vnd.oci.image.manifest.v1+json",
+            "size": 2483
+        },
+        "Id": "sha256:fabf007fd8177a7ae6dea528abb8fb464b7efffdac3dad7f31d65555d4f34eb6",
+        "Metadata": {
+            "LastTagTime": "2026-11-22T14:44:08.824651002Z"
+        },
+        "Os": "linux",
+        "Parent": "sha256:b1e3e226b7db033fbb3ba587313570a0242003721d98fa0875e13f17776d30bd",
+        "RepoDigests": [
+            "seal-log@sha256:fabf007fd8177a7ae6dea528abb8fb464b7efffdac3dad7f31d65555d4f34eb6"
+        ],
+        "RepoTags": [
+            "seal-log:lab"
+        ],
+        "RootFS": {
+            "Layers": [
+                "sha256:dd57f90311a2567b55ff22eeacff1602fd04ad7566e315957731359eab173b90",
+                "sha256:ba2541ec790ab743d0e3ee06e9eb5b3e8343b1fdc09cb65853c7c90803bbff00",
+                "sha256:963bbe74d7fd1230e35556a68a082c3c38f483207d18f981eb8a966fa9868b2f",
+                "sha256:be42025181029a31b54804a781dadf85528fb4d251f42ad239a3b1219740c2b7",
+                "sha256:2f247fbe1962af7693fe6bd346013ed4b4ccdfe62a8c1c882b9e4129f922193c",
+                "sha256:40995ca6ed70a71b96b601e586c129dd6f44b7229a9c72d7ecca59b8856d2d26",
+                "sha256:829f412c59f04913567fb1c4bdbc6495dd5effdd0f9cf69448197a1c0a630a50",
+                "sha256:e7eb50eb9ec99b52f918d81de3a1582e7e4f146344f2fbb256d63dc970ef5416",
+                "sha256:e119e465ce9906f069b952dd2cc300c2992dcbe32d76df976e8afedbad0d209e",
+                "sha256:28c911d82cbf93ada8aa2c3500a34f1134eb73bc03b159cc2207c511874acddf"
+            ],
+            "Type": "layers"
+        },
+        "Size": 45401340
+    }
+]

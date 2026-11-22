@@ -1,0 +1,170 @@
+UTC time: 2026-11-22T14:57:02.847451+00:00
+Container hostname: cbd70c5d81ed
+Check: normal
+
+REQUEST GET http://127.0.0.1:8000/me
+Authorization: Bearer demo-token-a
+RESPONSE HTTP 200
+Server: gunicorn
+Date: Sun, 22 Nov 2026 14:57:03 GMT
+Connection: close
+Content-Type: application/json
+Content-Length: 78
+{"id":"A","name":"Office A","object_limit":5,"objects_used":0,"plan":"Basic"}
+
+
+REQUEST GET http://127.0.0.1:8000/me
+Authorization: Bearer demo-token-b
+RESPONSE HTTP 200
+Server: gunicorn
+Date: Sun, 22 Nov 2026 14:57:03 GMT
+Connection: close
+Content-Type: application/json
+Content-Length: 77
+{"id":"B","name":"Office B","object_limit":20,"objects_used":0,"plan":"Pro"}
+
+
+REQUEST POST http://127.0.0.1:8000/objects
+Authorization: Bearer demo-token-a
+Content-Type: application/json
+{"name": "Cabinet A1", "location": "Room A", "seal_number": "A001"}
+RESPONSE HTTP 201
+Server: gunicorn
+Date: Sun, 22 Nov 2026 14:57:03 GMT
+Connection: close
+Content-Type: application/json
+Content-Length: 177
+{"created_at":"2026-11-22 14:57:03","current_seal":{"id":1,"installed_at":"2026-11-22 14:57:03","number":"A001"},"id":1,"location":"Room A","name":"Cabinet A1","tenant_id":"A"}
+
+
+REQUEST POST http://127.0.0.1:8000/objects/1/inspections
+Authorization: Bearer demo-token-a
+Content-Type: application/json
+{"result": "intact", "note": "Regular check."}
+RESPONSE HTTP 201
+Server: gunicorn
+Date: Sun, 22 Nov 2026 14:57:03 GMT
+Connection: close
+Content-Type: application/json
+Content-Length: 114
+{"checked_at":"2026-11-22 14:57:03","id":1,"note":"Regular check.","result":"intact","seal_id":1,"tenant_id":"A"}
+
+
+REQUEST POST http://127.0.0.1:8000/objects/1/seals
+Authorization: Bearer demo-token-a
+Content-Type: application/json
+{"seal_number": "A002"}
+RESPONSE HTTP 201
+Server: gunicorn
+Date: Sun, 22 Nov 2026 14:57:03 GMT
+Connection: close
+Content-Type: application/json
+Content-Length: 110
+{"id":2,"installed_at":"2026-11-22 14:57:03","number":"A002","object_id":1,"removed_at":null,"tenant_id":"A"}
+
+
+REQUEST GET http://127.0.0.1:8000/objects/1
+Authorization: Bearer demo-token-a
+RESPONSE HTTP 200
+Server: gunicorn
+Date: Sun, 22 Nov 2026 14:57:03 GMT
+Connection: close
+Content-Type: application/json
+Content-Length: 177
+{"created_at":"2026-11-22 14:57:03","current_seal":{"id":2,"installed_at":"2026-11-22 14:57:03","number":"A002"},"id":1,"location":"Room A","name":"Cabinet A1","tenant_id":"A"}
+
+
+REQUEST GET http://127.0.0.1:8000/objects/1/history
+Authorization: Bearer demo-token-a
+RESPONSE HTTP 200
+Server: gunicorn
+Date: Sun, 22 Nov 2026 14:57:03 GMT
+Connection: close
+Content-Type: application/json
+Content-Length: 505
+{"object":{"created_at":"2026-11-22 14:57:03","id":1,"location":"Room A","name":"Cabinet A1","tenant_id":"A"},"seals":[{"id":1,"inspections":[{"checked_at":"2026-11-22 14:57:03","id":1,"note":"Regular check.","result":"intact","seal_id":1,"tenant_id":"A"}],"installed_at":"2026-11-22 14:57:03","number":"A001","object_id":1,"removed_at":"2026-11-22 14:57:03","tenant_id":"A"},{"id":2,"inspections":[],"installed_at":"2026-11-22 14:57:03","number":"A002","object_id":1,"removed_at":null,"tenant_id":"A"}]}
+
+
+REQUEST POST http://127.0.0.1:8000/objects
+Authorization: Bearer demo-token-b
+Content-Type: application/json
+{"name": "Cabinet B1", "location": "Room B", "seal_number": "B001"}
+RESPONSE HTTP 201
+Server: gunicorn
+Date: Sun, 22 Nov 2026 14:57:03 GMT
+Connection: close
+Content-Type: application/json
+Content-Length: 177
+{"created_at":"2026-11-22 14:57:03","current_seal":{"id":3,"installed_at":"2026-11-22 14:57:03","number":"B001"},"id":2,"location":"Room B","name":"Cabinet B1","tenant_id":"B"}
+
+
+REQUEST POST http://127.0.0.1:8000/objects/2/inspections
+Authorization: Bearer demo-token-b
+Content-Type: application/json
+{"result": "intact", "note": "Regular check."}
+RESPONSE HTTP 201
+Server: gunicorn
+Date: Sun, 22 Nov 2026 14:57:03 GMT
+Connection: close
+Content-Type: application/json
+Content-Length: 114
+{"checked_at":"2026-11-22 14:57:03","id":2,"note":"Regular check.","result":"intact","seal_id":3,"tenant_id":"B"}
+
+
+REQUEST POST http://127.0.0.1:8000/objects/2/seals
+Authorization: Bearer demo-token-b
+Content-Type: application/json
+{"seal_number": "B002"}
+RESPONSE HTTP 201
+Server: gunicorn
+Date: Sun, 22 Nov 2026 14:57:03 GMT
+Connection: close
+Content-Type: application/json
+Content-Length: 110
+{"id":4,"installed_at":"2026-11-22 14:57:03","number":"B002","object_id":2,"removed_at":null,"tenant_id":"B"}
+
+
+REQUEST GET http://127.0.0.1:8000/objects/2
+Authorization: Bearer demo-token-b
+RESPONSE HTTP 200
+Server: gunicorn
+Date: Sun, 22 Nov 2026 14:57:03 GMT
+Connection: close
+Content-Type: application/json
+Content-Length: 177
+{"created_at":"2026-11-22 14:57:03","current_seal":{"id":4,"installed_at":"2026-11-22 14:57:03","number":"B002"},"id":2,"location":"Room B","name":"Cabinet B1","tenant_id":"B"}
+
+
+REQUEST GET http://127.0.0.1:8000/objects/2/history
+Authorization: Bearer demo-token-b
+RESPONSE HTTP 200
+Server: gunicorn
+Date: Sun, 22 Nov 2026 14:57:03 GMT
+Connection: close
+Content-Type: application/json
+Content-Length: 505
+{"object":{"created_at":"2026-11-22 14:57:03","id":2,"location":"Room B","name":"Cabinet B1","tenant_id":"B"},"seals":[{"id":3,"inspections":[{"checked_at":"2026-11-22 14:57:03","id":2,"note":"Regular check.","result":"intact","seal_id":3,"tenant_id":"B"}],"installed_at":"2026-11-22 14:57:03","number":"B001","object_id":2,"removed_at":"2026-11-22 14:57:03","tenant_id":"B"},{"id":4,"inspections":[],"installed_at":"2026-11-22 14:57:03","number":"B002","object_id":2,"removed_at":null,"tenant_id":"B"}]}
+
+
+REQUEST GET http://127.0.0.1:8000/objects
+Authorization: Bearer demo-token-a
+RESPONSE HTTP 200
+Server: gunicorn
+Date: Sun, 22 Nov 2026 14:57:03 GMT
+Connection: close
+Content-Type: application/json
+Content-Length: 191
+{"objects":[{"created_at":"2026-11-22 14:57:03","current_seal":{"id":2,"installed_at":"2026-11-22 14:57:03","number":"A002"},"id":1,"location":"Room A","name":"Cabinet A1","tenant_id":"A"}]}
+
+
+REQUEST GET http://127.0.0.1:8000/objects
+Authorization: Bearer demo-token-b
+RESPONSE HTTP 200
+Server: gunicorn
+Date: Sun, 22 Nov 2026 14:57:03 GMT
+Connection: close
+Content-Type: application/json
+Content-Length: 191
+{"objects":[{"created_at":"2026-11-22 14:57:03","current_seal":{"id":4,"installed_at":"2026-11-22 14:57:03","number":"B002"},"id":2,"location":"Room B","name":"Cabinet B1","tenant_id":"B"}]}
+
+RESULT: | normal | A and B complete the workflow | Both completed it; own lists and history verified | PASS |

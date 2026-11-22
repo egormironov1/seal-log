@@ -1,0 +1,42 @@
+DEPRECATED: The legacy builder is deprecated and will be removed in a future release.
+            Install the buildx component to build images with BuildKit:
+            https://docs.docker.com/go/buildx/
+
+Sending build context to Docker daemon  26.11kB
+Step 1/12 : FROM python:3.13-slim
+ ---> e48f59cdba69
+Step 2/12 : ENV DATABASE_PATH=/data/seal-log.db
+ ---> Using cache
+ ---> 76a237695891
+Step 3/12 : ENV PYTHONDONTWRITEBYTECODE=1
+ ---> Using cache
+ ---> d16eddd0cb40
+Step 4/12 : WORKDIR /app
+ ---> Using cache
+ ---> 9654f3d6a88b
+Step 5/12 : COPY requirements.txt .
+ ---> Using cache
+ ---> eeb1af6f83d7
+Step 6/12 : RUN pip install --no-cache-dir -r requirements.txt
+ ---> Using cache
+ ---> f64026ef4864
+Step 7/12 : RUN useradd --create-home --user-group --uid 10001 appuser
+ ---> Using cache
+ ---> dd7af8115129
+Step 8/12 : RUN mkdir -p /data && chown appuser:appuser /data
+ ---> Using cache
+ ---> eb0296975619
+Step 9/12 : COPY app.py schema.sql ./
+ ---> Using cache
+ ---> 1d8a1ed3a72b
+Step 10/12 : USER appuser
+ ---> Using cache
+ ---> 11c1f0bcf243
+Step 11/12 : EXPOSE 8000
+ ---> Using cache
+ ---> b1e3e226b7db
+Step 12/12 : CMD ["gunicorn", "--bind", "0.0.0.0:8000", "--workers", "1", "--access-logfile", "-", "app:app"]
+ ---> Using cache
+ ---> fabf007fd817
+Successfully built fabf007fd817
+Successfully tagged seal-log:lab
