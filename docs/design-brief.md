@@ -46,7 +46,7 @@ Every operation on objects, seals and inspections checks the tenant ID, includin
 | Basic | Office A | 5 |
 | Pro | Office B | 20 |
 
-Creating an object uses one place in the allowance. Before saving it, the server counts that tenant's objects and checks the plan limit. The count check and save happen in one database transaction. At the limit, the server returns 403 Forbidden and a message with the allowed count, for example Object limit reached (3). No object is saved.
+Creating an object uses one place in the allowance. Before saving it, the server counts that tenant's objects and checks the plan limit. The count check and save happen in one database transaction. At the limit, the server returns 403 Forbidden and a message with the allowed count, for example Object limit reached (5). No object is saved.
 
 The allowance is the total number of registered objects. Inspections and seal replacements do not use extra places. Object deletion is outside the prototype scope. Plans will be configured in advance; no payment system is needed.
 
@@ -76,4 +76,4 @@ Each check starts with a fresh test database and the data described below.
 
 **Action:** Try to create a fourth object as A, then as B. Read both object lists.
 
-**Expected result:** A receives 403 Forbidden and Object limit reached (3). A still has three objects. B receives 201 Created and now has four objects, which is within its limit of 20.
+**Expected result:** A receives 403 Forbidden and Object limit reached (5). A still has three objects. B receives 201 Created and now has four objects, which is within its limit of 20.
